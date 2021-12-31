@@ -1,0 +1,71 @@
+1. Настройка среды:
+
+  - установка и настройка astra linux в виртуальной машине
+        - замена шрифтов для нормального отображения
+        - отмена горячих клавиш (Alt + F1, Alt + F2)  
+          // минус диспетчера горячих клавиш - нет поиска по названию клавиш
+        - установка пакетов необходимых для нижеприведенных программ
+
+  - установка Google Chrome
+      - созданы закладки
+            - https://postgrespro.ru/docs/postgresql
+            - https://learn.javascript.ru
+
+  - установка git, gcc(старая версия), g++(старая версия)
+
+  - установка Far2l (из исходников)        
+        - пришлось собрать из исходников cmake(старая версия), spdlog(отсутствует), uchardet(отсутствует)
+        - создана символическая ссылка far (для удобного запуска)
+        - создано меню пользователя
+            - для быстрого перемещения по часто используемым каталогам
+        - настроено разворачивание окна на весь экран при запуске
+
+  - установка yEd Graph Editor
+
+  - установка Net 6.0       
+        - путь папки добавлен в PATH
+        - добавлена системная переменная DOTNET_ROOT=/путь/до/папки/net6.0 в /etc/profile
+        - . /etc/profile
+
+  - установка Azure Data Studio с плагином PostgreSQL
+
+  - установка VsCode c плагином C#(omniSharp)
+
+  - установка глобальных переменных git
+      - git config --global user.name  "Lukin.Aleksandr"
+      - git config --global user.email "lukin.a.g.spb@gmail.com"
+
+  - установка HttpRepl
+        dotnet tool install -g Microsoft.dotnet-httprepl 
+
+  - установка PostgreSQL 14.1(из исходников, т.к. в пакетах старая версия)    
+      - sudo apt-get remove postgresql*      
+      - ./configure --prefix=/usr
+      - make world-bin && make install && make clean           
+      - создан пользователь postgres 
+      - создан каталог данных /var/pgsql/data
+      - установлен владелец postgres на каталог данных
+      - установлен режим доступа 750 на каталог данных
+      - добавлена системная переменная PGDATA=/var/pgsql/data в /etc/profile
+      - . /etc/profile
+      - в терминале выполнен вход из под пользователя postgres
+      - инициализация:     initdb -k      
+      - запуск сервера:    pg_ctl -w -l /var/pgsql/logfile start     
+      - остановка сервера: pg_ctl stop            
+
+  - настройка PostgreSQL
+      - пользователю по умолчанию(postgres) создан пароль
+            $sudo -u postgres psql
+            postgres=#ALTER USER postgres WITH PASSWORD 'new_password';
+            postgres=#\q
+
+  - Создана структура каталогов 
+      - Projects\BooksManager
+            - Task            // каталог, содержащий информацию, по поставленной задаче
+            - Diagrams        // для хранения графических схем
+            - Steps           // каталог, содержащий информацию, о последовательности шагов
+                              // по решению задачи
+            - BooksManager    // каталог, содержащий исходный код проекта
+        
+2. Составлена предварительная обобщенная схема БД в yEd (файл /diagrams/er_schema_db.graphml)
+        
